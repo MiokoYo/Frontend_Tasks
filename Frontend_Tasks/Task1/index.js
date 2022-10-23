@@ -7,4 +7,3 @@ const block5 = document.getElementsByClassName('block5');
 
 const colors = ['#0149cd', '#088ffd', '#2e0617', '#a80d14', '#3f1b98'];
 
-block1.style.background = 'red';
