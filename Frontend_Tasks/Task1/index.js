@@ -1,42 +1,49 @@
 console.log('test');
 const colors = ['#0149cd', '#088ffd', '#2e0617', '#a80d14', '#3f1b98'];
 
-//FIRST VARIANT
-
-// document.getElementById('block1').innerHTML = "#0149cd";
-// block1.style.background = colors[0];
-
-// document.getElementById('block2').innerHTML = "#088ffd";
-// block2.style.background = colors[1];
-
-// document.getElementById('block3').innerHTML = "#2e0617";
-// block3.style.background = colors[2];
-
-// document.getElementById('block4').innerHTML = "#a80d14";
-// block4.style.background = colors[3];
-
-// document.getElementById('block5').innerHTML = "#3f1b98";
-// block5.style.background = colors[4];
-
-//SECOND VARIANT
-
-// let blocks = document.getElementsByClassName('block');
-// blocks[0].style.background = colors[0];
-// blocks[1].style.background = colors[1];
-// blocks[2].style.background = colors[2];
-// blocks[3].style.background = colors[3];
-// blocks[4].style.background = colors[4];
-
-// blocks[0].innerHTML = "#0149cd";
-// blocks[1].innerHTML = "#088ffd";
-// blocks[2].innerHTML = "##2e0617";
-// blocks[3].innerHTML = "#a80d14";
-// blocks[4].innerHTML = "#3f1b98";
-
-//THIRD VARIANT 
-
 let blocks = document.getElementsByClassName('block');
-for (let i = 0; i < blocks.length; i++) {
+let textColors = document.querySelectorAll('div > span');
+
+for (let i = 0; i < textColors.length; i++) {
     blocks[i].style.background = colors[i],
-        blocks[i].innerHTML = colors[i]
+        textColors[i].innerHTML = colors[i]
 }
+
+colors.forEach(function (elem, i) {
+    blocks[i].style.background = elem;
+    textColors[i].innerHTML = elem;
+});
+
+
+//function of color assignment
+
+function colorAssign(x, y) {
+    colors.forEach(function (elem, i) {
+        x[i].style.background = elem;
+        y[i].innerHTML = elem;
+    })
+}
+
+colorAssign(blocks, textColors);
+
+
+//random color 
+
+function randomColor() {
+    let hexString = "0123456789ABCDEF";
+    let hexCode = "#";
+    for (i = 0; i < 6; i++) {
+        hexCode += hexString[Math.floor(Math.random() * hexString.length)];
+    }
+    return hexCode;
+}
+
+for (let i = 0; i < blocks.length; i++) {
+    blocks[i].style.background = randomColor();
+};
+
+let blockArr = Array.from(blocks);
+blockArr.forEach(function (elem) {
+    elem.style.background = randomColor();
+});
+
