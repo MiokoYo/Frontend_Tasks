@@ -1,31 +1,7 @@
 console.log('test');
-const colors = ['#0149cd', '#088ffd', '#2e0617', '#a80d14', '#3f1b98'];
 
 let blocks = document.getElementsByClassName('block');
-let textColors = document.querySelectorAll('div > span');
-
-for (let i = 0; i < textColors.length; i++) {
-    blocks[i].style.background = colors[i],
-        textColors[i].innerHTML = colors[i]
-}
-
-colors.forEach(function (elem, i) {
-    blocks[i].style.background = elem;
-    textColors[i].innerHTML = elem;
-});
-
-
-//function of color assignment
-
-function colorAssign(x, y) {
-    colors.forEach(function (elem, i) {
-        x[i].style.background = elem;
-        y[i].innerHTML = elem;
-    })
-}
-
-colorAssign(blocks, textColors);
-
+let textColors = document.querySelectorAll('span')
 
 //random color 
 
@@ -38,12 +14,17 @@ function randomColor() {
     return hexCode;
 }
 
-for (let i = 0; i < blocks.length; i++) {
-    blocks[i].style.background = randomColor();
-};
+//function of color assignment
 
-let blockArr = Array.from(blocks);
-blockArr.forEach(function (elem) {
-    elem.style.background = randomColor();
-});
+function colorAssign(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        let color = randomColor()
+        arr[i].style.background = color;
+        textColors[i].innerHTML = color;
+    }
+}
+
+colorAssign(blocks)
+
+
 
